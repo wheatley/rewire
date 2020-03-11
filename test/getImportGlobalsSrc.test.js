@@ -28,7 +28,7 @@ describe("getImportGlobalsSrc", function () {
         delete global['__core-js_shared__'];
         delete global['a-b'];
 
-        expectedGlobals = Object.keys(global);
+        expectedGlobals = Object.keys(Object.getOwnPropertyDescriptors(global));
 
         vm.runInNewContext(src, context);
         actualGlobals = Object.keys(context);
